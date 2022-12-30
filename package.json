@@ -1,0 +1,10 @@
+{
+  "name": "api.smkdbs.edu.my",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "scripts": {
+    "start": "node server/index.js"
+  }
+}
