@@ -59,7 +59,7 @@ function serveBackendAPI (port=3000){
         })
     })
 
-    app.get('/auth/login', (req, res) => {
+    app.post('/auth/login', (req, res) => {
         res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
         res.header('Access-Control-Allow-Headers', 'Content-Type');
         res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
