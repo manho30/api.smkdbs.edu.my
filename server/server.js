@@ -68,6 +68,14 @@ function serveBackendAPI (port=3000){
         const username = req.query.user;
         const password = req.query.p
 
+        if (!username || !password) {
+            res.status(400).json({
+                'ok': false,
+                'status': 400,
+            })
+            return;
+        }
+
         const decodedUsername = Buffer.from(username, 'base64').toString('ascii');
         const decodedPassword = Buffer.from(password, 'base64').toString('ascii');
 
@@ -77,6 +85,7 @@ function serveBackendAPI (port=3000){
                 'status': 200,
                 'auth_token': generateToken(32)
             })
+            return;
         }
 
         if (decodedUsername === 'DEMO_USER_AUTO_GENERATED_WEIHON_23832' && decodedPassword === '12345678') {
@@ -85,6 +94,7 @@ function serveBackendAPI (port=3000){
                 'status': 200,
                 'auth_token': generateToken(32)
             })
+            return;
         }
     })
 
