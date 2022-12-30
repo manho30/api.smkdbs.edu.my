@@ -61,31 +61,28 @@ function serveBackendAPI (port=3000){
     })
 
     app.post('/auth/login', (req, res) => {
-        let ok, status;
         res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
         res.header('Access-Control-Allow-Headers', 'Content-Type');
         res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 
-        const username = req.query.u;
+        const username = req.query.user;
         const password = req.query.p
 
         const decodedUsername = Buffer.from(username, 'base64').toString('ascii');
         const decodedPassword = Buffer.from(password, 'base64').toString('ascii');
 
         if (decodedUsername === 'admin' && decodedPassword === 'admin') {
-            ok = true;
-            status = 200;
+            res.status(200).json({
+                'ok': true,
+                'status': 200,
+                'auth_token': generateToken(32)
+            })
         }
 
         if (decodedUsername === 'DEMO_USER_AUTO_GENERATED_WEIHON_23832' && decodedPassword === '12345678') {
-            const ok = true;
-            const status = 200;
-        }
-
-        if (username === 'admin' && password === 'admin') {
             res.status(200).json({
-                'ok': ok,
-                'status': status,
+                'ok': true,
+                'status': 200,
                 'auth_token': generateToken(32)
             })
         }
