@@ -68,7 +68,7 @@ function serveBackendAPI (port=3000){
         const username = req.query.user;
         const password = req.query.p
 
-        if (!username || !password) {
+        if (!username || !password || username.indexOf('==') !== -1 || password.indexOf('==') !== -1) {
             res.status(400).json({
                 'ok': false,
                 'status': 400,
