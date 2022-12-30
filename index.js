@@ -5,4 +5,4 @@
  * @IDE         : WebStorm
  */
 
-require('./server.js')(3000);
+require('./server/server.js')(3000);
